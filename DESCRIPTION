@@ -1,19 +1,19 @@
 Package: rameritrade
 Title: 'TD Ameritrade' API Interface for R
-Version: 0.1.4
-Author: Tony Trevisan [aut, cre]
+Version: 0.1.5
+Author: Anthony Balentine [aut, cre]
 Authors@R: 
-    person(given = "Tony",
-           family = "Trevisan",
+    person(given = "Anthony",
+           family = "Balentine",
            role = c("aut", "cre"),
-           email = "anthonytrevisan@gmail.com")
-Maintainer: Tony Trevisan <anthonytrevisan@gmail.com>
-URL: https://github.com/tonytrevisan/rameritrade/,
-        https://developer.tdameritrade.com/
-BugReports: https://github.com/tonytrevisan/rameritrade/issues
-Description: Use R to interface with the 'TD Ameritrade' API, including authentication, trading,
-    price requests, account information, and option chains. A user will need a TD brokerage 
-    account and TD Ameritrade developer app. See README for authentication process and examples.
+           email = "exploringfinance1@gmail.com")
+Maintainer: Anthony Balentine <exploringfinance1@gmail.com>
+URL: https://exploringfinance.github.io/rameritrade/
+BugReports: https://github.com/exploringfinance/rameritrade/issues
+Description: Use R to interface with the 'TD Ameritrade' API <https://developer.tdameritrade.com/>.
+    Functions include authentication, trading, price requests, account information, and option 
+    chains. A user will need a TD brokerage account and TD Ameritrade developer app. See README 
+    for authentication process and examples.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -22,6 +22,6 @@ Imports: httr, urltools (>= 1.7.3), lubridate, dplyr, jsonlite,
 RoxygenNote: 7.1.1
 Suggests: testthat
 NeedsCompilation: no
-Packaged: 2020-10-08 00:30:44 UTC; rstudio
+Packaged: 2021-02-22 02:31:52 UTC; rstudio
 Repository: CRAN
-Date/Publication: 2020-10-15 13:20:02 UTC
+Date/Publication: 2021-02-22 13:50:02 UTC

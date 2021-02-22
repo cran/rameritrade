@@ -133,6 +133,11 @@ ram_history_single = function(ticker='AAPL',startDate=Sys.Date()-30,endDate=Sys.
   startDate = as.Date(startDate)+lubridate::days(1)
   endDate = as.Date(endDate)+lubridate::days(1)
   
+  # Set to non scientific notation and Reset options on exit
+  old <- options()
+  on.exit(options(old))
+  options(scipen=999)
+  
   # Set Variables for URL
   if (missing(freq)) freq='daily'
   startDateMS = as.character(as.numeric(lubridate::as_datetime(startDate, tz='America/New_York'))*1000)

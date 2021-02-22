@@ -5,12 +5,19 @@
 
 <!-- badges: start -->
 
+![CRAN
+Version](https://www.r-pkg.org/badges/version/rameritrade?color=green)
+![Dev Version](https://img.shields.io/badge/github-0.1.5-blue.svg)
+![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/rameritrade)
 <!-- badges: end -->
 
 R package for the TD Ameritrade API, facilitating authentication,
 trading, price requests, account balances, positions, order history,
 option chains, and more. A user will need a TD Brokerage account and TD
-Ameritrade developer app.
+Ameritrade developer app. Read the article [Trade on
+TD](https://exploringfinance.github.io/posts/2020-10-17-trade-on-td-ameritrade-with-r/)
+for a full example of logging in and executing a trade, or see the
+instructions below.
 
 ## Introduction
 
@@ -24,7 +31,7 @@ active which can make it hard to build automated trading strategies
 using tools like CRON jobs. Using the TD API you can fully automate
 trade execution across multiple accounts and multiple logins, assuming
 you have access and permission to do so. This can be a great way to
-dollar cost average into the market for an IRA\!
+dollar cost average into the market for an IRA!
 
 The initial authentication requires a few manual steps, but once initial
 authorization is granted, all API calls can be fully automated without
@@ -72,11 +79,12 @@ THROUGH THE TD WEBSITE
 You can install rameritrade using:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("tonytrevisan/rameritrade")
+# Available on CRAN
+install.packages("rameritrade")
 
-# NOT CURRENTLY AVAILABLE ON CRAN
-# install.packages("rameritrade")
+# Install development version - fixes for cronR and price history
+# install.packages("devtools")
+devtools::install_github("exploringfinance/rameritrade")
 ```
 
 ## Authentication
@@ -125,12 +133,12 @@ and will take action on excessive tokens being generated
 
 #### Terminology
 
-  - Authorization Code: generated from using a TD Brokerage to log into
+-   Authorization Code: generated from using a TD Brokerage to log into
     the `td_auth_loginURL`.
-  - Refresh Token: generated using the Authorization Code or an existing
+-   Refresh Token: generated using the Authorization Code or an existing
     Refresh Token and is used to create access tokens. Refresh token is
     valid for 90 days.
-  - Access Token: generated using the Refresh Token and creates the
+-   Access Token: generated using the Refresh Token and creates the
     connection to the API. Valid for 30 minutes.
 
 ## Authentication Example
@@ -141,7 +149,6 @@ will not be required unless the Refresh Token expires. This can be
 avoided by passing a valid Refresh Token to `td_auth_refreshToken`.
 
 ``` r
-
 # --------- Step 1 -----------
 # Register an App with TD Ameritrade Developer, create a Callback URL, and get a Consumer Key.
 # The callback URL can be anything (for example: https://myTDapp).
@@ -373,7 +380,6 @@ rameritrade::td_cancelOrder(Ord3$orderId, accountNumber)
 You can pull entire option chains for individual securities.
 
 ``` r
-
 library(rameritrade)
 consumerKey = 'TD_CONSUMER_KEY'
 
@@ -470,7 +476,6 @@ save access tokens to manage multiple accounts assuming auth\_init was
 used for two separate log ins.
 
 ``` r
-
 library(rameritrade)
 consumerKey = 'APP_CONSUMER_KEY'
 

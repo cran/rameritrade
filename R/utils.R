@@ -14,7 +14,7 @@ ram_accessToken <- function(accessToken) {
                     'Please pass the output from td_auth_accessToken.')
     if (class(accessToken) != 'list') stop(ErrMsg, call. = FALSE)
     if (length(accessToken) != 6) stop(ErrMsg, call. = FALSE)
-    if (ls(accessToken)[[1]] != 'access_token') stop(ErrMsg, call. = FALSE)
+    if (!('access_token' %in% names(accessToken))) stop(ErrMsg, call. = FALSE)
 
     # check if passed access token has expired
     if(accessToken$expireTime<Sys.time()) {
@@ -83,20 +83,20 @@ ram_checkRefresh = function(refreshToken){
   # check if refresh token is a list
   if (class(refreshToken) != 'list') {
     stop(paste0('Incorrect object type passed as Refresh Token. Please pass ',
-                'the output from auth_init_refreshToken or auth_new_refreshToken.', 
+                'the output from auth_init_refreshToken or auth_new_refreshToken.',
                 call. = FALSE))
   }
-  
+
   # Validate refresh token
-  if (ls(refreshToken)[[2]]!='refresh_token') {
+  if (!('refresh_token' %in% names(refreshToken))) {
     stop(paste0('Incorrect object type passed as Refresh Token. Please pass ',
-                'the output from auth_init_refreshToken or auth_new_refreshToken.', 
+                'the output from auth_init_refreshToken or auth_new_refreshToken.',
                 call. = FALSE))
   }
   # Check if Refresh Token has expired
   if (refreshToken$refreshExpire<Sys.time()) {
     stop(paste0('The Refresh Token being used has expired. Please reauthenticate ',
-                'using auth_init_refreshToken to obtain a new Refresh Token.', 
+                'using auth_init_refreshToken to obtain a new Refresh Token.',
                  call. = FALSE))
   }
 }
